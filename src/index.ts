@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import authRoutes from './routes/authRoutes';  // Update if necessary based on the actual location of the file
-import pool from './db/db';  // Import the pool to ensure the database connection is established
+import authRoutes from './routes/authRoutes'; 
+import pool from './db/db'; 
 
-dotenv.config();  // Load environment variables from .env file
+dotenv.config(); 
 
 const app = express();
 
@@ -14,10 +14,10 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Use the routes for authentication
+
 app.use('/api/auth', authRoutes);
 
-// Test the connection
+
 pool.connect()
    .then(() => console.log('Connected to PostgreSQL'))
   .catch((err) => console.error('Error connecting to PostgreSQL', err));
